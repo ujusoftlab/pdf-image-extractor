@@ -11,6 +11,12 @@ import io
 
 app = FastAPI()
 
+required_dirs = ["./uploads", "./output_images"]
+
+for d in required_dirs:
+    if not os.path.exists(d):
+        os.makedirs(d)
+        
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
