@@ -98,7 +98,7 @@
       // 1. 업로드
       const formData = new FormData();
       formData.append("file", selectedFile);
-      await fetch("http://127.0.0.1:8000/upload", {
+      await fetch("https://pdf-image-extractor-r1ig.onrender.com/upload", {
         method: "POST",
         body: formData
       });
@@ -110,7 +110,7 @@
       cropData.append("left", document.getElementById('left').value);
       cropData.append("right", document.getElementById('right').value);
       cropData.append("bottom", document.getElementById('bottom').value);
-      await fetch("http://127.0.0.1:8000/crop", {
+      await fetch("https://pdf-image-extractor-r1ig.onrender.com/crop", {
         method: "POST",
         body: cropData
       });
@@ -118,14 +118,14 @@
       // 3. 미리보기
       const preview = document.getElementById('preview');
       const cacheBuster = Date.now();
-      preview.src = `http://127.0.0.1:8000/download?filename=${currentCroppedFilename}&v=${cacheBuster}`;
+      preview.src = `https://pdf-image-extractor-r1ig.onrender.com/download?filename=${currentCroppedFilename}&v=${cacheBuster}`;
       preview.style.display = "block";
       document.getElementById("downloadBtn").style.display = "inline-block";
     }
 
     // Crop된 이미지 다운로드
     function downloadCropped() {
-      window.location.href = `http://127.0.0.1:8000/download?filename=${currentCroppedFilename}`;
+      window.location.href = `https://pdf-image-extractor-r1ig.onrender.com/download?filename=${currentCroppedFilename}`;
     }
 
     // 전체 페이지 zip 다운로드
@@ -139,7 +139,7 @@
       const formData = new FormData();
       formData.append("filename", filename);
 
-      const response = await fetch("http://127.0.0.1:8000/multi_convert", {
+      const response = await fetch("https://pdf-image-extractor-r1ig.onrender.com/multi_convert", {
         method: "POST",
         body: formData,
       });
@@ -168,7 +168,7 @@
         formData.append("right", document.getElementById('right').value);
         formData.append("bottom", document.getElementById('bottom').value);
 
-        const response = await fetch("http://127.0.0.1:8000/multi_crop_convert", {
+        const response = await fetch("https://pdf-image-extractor-r1ig.onrender.com/multi_crop_convert", {
         method: "POST",
         body: formData
         });
