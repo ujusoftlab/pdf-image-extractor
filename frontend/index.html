@@ -62,11 +62,28 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
+    .crop-settings {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .crop-settings label {
+      display: inline-block;
+      margin: 5px 15px;
+      font-size: 14px;
+    }
+        
     .button-container {
       margin-top: 20px;
       text-align: center;
     }
 
+    #preview {
+      max-width: 500px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      display: block;
+    }
     button {
       padding: 10px 20px;
       font-size: 16px;
@@ -129,24 +146,30 @@
   </div>
 </header>
 
-  <div id="dropZone" style="width:300px; height:150px; border:2px dashed #888; line-height:150px; text-align:center; margin-bottom:15px;">
-    👉 여기로 PDF 파일을 드래그하세요
-  </div>
+<div class="container">
+  <div id="dropZone">👉 여기로 PDF 파일을 드래그하세요</div>
   <input type="file" id="pdfFile" accept=".pdf" style="display:none;" />
 
-  <h3>🔧 Crop Offset 설정 (단위: px)</h3>
-  Top: <input type="number" id="top" value="100"><br>
-  Left: <input type="number" id="left" value="420"><br>
-  Right: <input type="number" id="right" value="420"><br>
-  Bottom: <input type="number" id="bottom" value="100"><br><br>
+  <div class="crop-settings">
+    <h3>🔧 Crop Offset 설정 (단위: px)</h3>
+    <label>Top: <input type="number" id="top" value="100"></label>
+    <label>Left: <input type="number" id="left" value="420"></label>
+    <label>Right: <input type="number" id="right" value="420"></label>
+    <label>Bottom: <input type="number" id="bottom" value="100"></label>
+  </div>
 
-  <button onclick="uploadAndCrop()">변환하고 미리보기</button>
-  <button id="downloadBtn" onclick="downloadCropped()">⬇️ Crop 이미지 다운로드</button>
-  <button onclick="downloadAllCroppedPages()">📦 Crop된 모든 페이지 ZIP 다운로드</button>
+  <div class="button-container">
+    <button onclick="uploadAndCrop()">변환하고 미리보기</button>
+    <button id="downloadBtn" onclick="downloadCropped()">⬇️ Crop 이미지 다운로드</button>
+    <button onclick="downloadAllCroppedPages()">📦 Crop된 모든 페이지 ZIP 다운로드</button>
+  </div>
 
-  <h3>📸 미리보기</h3>
-  <img id="preview" src="" style="max-width: 500px; display:none; border: 1px solid #ccc;" />
-
+  <div>
+    <h3>📸 미리보기</h3>
+    <img id="preview" src="" style="display:none;" />
+  </div>
+</div>
+  
   <script>
     let selectedFile = null;
     let currentCroppedFilename = "";
