@@ -67,10 +67,13 @@
       margin: 20px 0;
     }
 
-    .crop-settings label {
-      display: inline-block;
-      margin: 5px 15px;
+   .crop-settings label {
+      display: flex;
+      justify-content: flex-end;  /* 오른쪽 정렬 */
+      align-items: center;
+      margin: 8px 0;
       font-size: 14px;
+      gap: 10px; /* 라벨과 input 사이 간격 */
     }
         
     .button-container {
@@ -152,10 +155,10 @@
 
   <div class="crop-settings">
     <h3>🔧 Crop Offset 설정 (단위: px)</h3>
-    <label>Top: <input type="number" id="top" value="100"></label>
-    <label>Left: <input type="number" id="left" value="420"></label>
-    <label>Right: <input type="number" id="right" value="420"></label>
-    <label>Bottom: <input type="number" id="bottom" value="100"></label>
+    <label>Top: <input type="number" id="top" value="100"></label><br>
+    <label>Left: <input type="number" id="left" value="420"></label><br>
+    <label>Right: <input type="number" id="right" value="420"></label><br>
+    <label>Bottom: <input type="number" id="bottom" value="100"></label><br>
   </div>
 
   <div class="button-container">
