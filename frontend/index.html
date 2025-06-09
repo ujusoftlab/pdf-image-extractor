@@ -47,7 +47,7 @@
     }
 
     #dropZone {
-      margin-top: 10px
+      margin-top: 10px;
       border: 2px dashed #aaa;
       background: #fff;
       padding: 30px;
@@ -162,6 +162,10 @@
 </div>
   
   <script>
+
+    window.addEventListener('dragover', e => e.preventDefault());
+    window.addEventListener('drop', e => e.preventDefault());
+    
     let selectedFile = null;
     let currentCroppedFilename = "";
 
