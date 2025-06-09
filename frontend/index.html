@@ -119,6 +119,19 @@
       margin: 20px auto;
       text-align: center;
     }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 4px solid #007bff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 
   
@@ -151,8 +164,9 @@
     <button onclick="downloadAllCroppedPages()">📦 Crop된 모든 페이지 ZIP 다운로드</button>
   </div>
 
-  <div id="loadingMessage" style="display:none; margin-top:20px; color:#007bff; font-weight:bold;">
-  ⏳ 처리 중입니다... 잠시만 기다려주세요.
+  <div id="loadingMessage" style="display:none; margin-top:20px; text-align:center;">
+    <div class="spinner"></div>
+    <p>처리 중입니다... 잠시만 기다려주세요.</p>
   </div>
   
   <div>
@@ -211,6 +225,9 @@
         return;
       }
 
+      document.getElementById("loadingMessage").style.display = "block"; // 시작 메시지
+
+      try {
         const filename = selectedFile.name;
         currentCroppedFilename = filename.replace(".pdf", "_cropped.jpg");
   
@@ -240,6 +257,12 @@
         preview.src = `https://pdf-image-extractor-r1ig.onrender.com/download?filename=${currentCroppedFilename}&v=${cacheBuster}`;
         preview.style.display = "block";
         document.getElementById("downloadBtn").style.display = "inline-block";
+      } catch (error) {
+        alert("처리 중 오류가 발생했습니다.");
+        console.error(error);
+      } finally {
+          document.getElementById("loadingMessage").style.display = "none"; // 끝나면 숨김
+      }       
     }
   
     // Crop된 이미지 다운로드
