@@ -274,12 +274,12 @@
         document.body.appendChild(a);
         a.click();
         a.remove();
-        } catch (error) {
-          alert("처리 중 오류가 발생했습니다.");
-          console.error(error);
-        } finally {
+      } catch (error) {
+        alert("처리 중 오류가 발생했습니다.");
+        console.error(error);
+      } finally {
           document.getElementById("loadingMessage").style.display = "none"; // 끝나면 숨김
-        }  
+      } 
     }
 
     async function downloadAllCroppedPages() {
@@ -312,8 +312,7 @@
           document.body.appendChild(a);
           a.click();
           a.remove();
-          }
-        } catch (error) {
+          } catch (error) {
           alert("처리 중 오류가 발생했습니다.");
           console.error(error);
         } finally {
